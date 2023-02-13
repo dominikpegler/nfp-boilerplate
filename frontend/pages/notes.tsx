@@ -1,5 +1,6 @@
-import Head from 'next/head';
-import { useState, useEffect } from 'react';
+import Head from "next/head";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 
 interface Note {
   id: number;
@@ -8,7 +9,7 @@ interface Note {
 }
 
 const Notes = () => {
-  const [note, setNote] = useState<string>('');
+  const [note, setNote] = useState<string>("");
   const [notes, setNotes] = useState<Note[]>([]);
 
   useEffect(() => {
@@ -27,9 +28,9 @@ const Notes = () => {
 
   const handleSubmit = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/notes/`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         text: note,
@@ -41,20 +42,20 @@ const Notes = () => {
   };
 
   return (
-    <div>
+    <div className="app">
       <Head>
         <title>Notes</title>
       </Head>
       <div className="container mx-auto p-10 m-10">
         <div className="flex flex-col">
+          <Link href="/">Home</Link>
           <h1 className="font-bold mb-3">Notes</h1>
-          <textarea
-            value={note}
-            onChange={handleChange}
-            className="border-2"
-          />
+          <textarea value={note} onChange={handleChange} className="border-2" />
           <div className="mx-auto p-3 m-5">
-            <button onClick={handleSubmit} className="bg-green-500 p-3 text-white">
+            <button
+              onClick={handleSubmit}
+              className="bg-green-500 p-3 text-white"
+            >
               Submit
             </button>
           </div>
