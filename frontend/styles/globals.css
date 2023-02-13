@@ -1,28 +1,120 @@
+/* Define some color variables */
 :root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+  --primary-color: #2196f3;
+  --secondary-color: #ff5722;
+  --text-color: #333;
+  --background-color: #f5f5f5;
+}
+/* Reset default styles */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+li,
+a,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+code {
+  font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-
-  --foreground-rgb: 0, 0, 0;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html,
+/* Set basic typography styles */
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  font-family: Georgia, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Set up a responsive grid system */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+@media (max-width: 767px) {
+  .col {
+    flex-basis: 100%;
+  }
+}
+
+/* Define some reusable utility classes */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.padding-1 {
+  padding: 1rem;
+}
+
+.margin-1 {
+  margin: 1rem;
+}
+
+/* Define some basic styles for buttons */
+button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 4px;
+  padding: 1rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
 }
 
 .app {
