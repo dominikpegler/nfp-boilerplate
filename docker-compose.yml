@@ -1,0 +1,80 @@
+version: "3.7"
+
+services:
+
+  db:
+    build:
+      context: .
+      dockerfile: db.Dockerfile
+    image: nfp-boilerplate-db
+    container_name: nfp-boilerplate-db
+    hostname: nfp-boilerplate-db
+    restart: always
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      nfp-boilerplate:
+        aliases:
+          - nfp-boilerplate-db
+
+# nginx:
+  #   image: nginx:1.23.2-alpine
+  #   hostname: nfp-boilerplate-nx
+  #   container_name: nfp-boilerplate-nx
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/conf.d/default.conf
+  #     - ./key.pem:/root/ssl/key.pem
+  #     - ./cert.pem:/root/ssl/cert.pem
+  #   ports:
+  #     - "443:443"
+  #   networks:
+  #     psiz:
+  #       aliases:
+  #         - nfp-boilerplate-nginx
+  #   restart: always
+  #   depends_on:
+  #     - web
+  
+  # web:
+  #   build:
+  #     context: .
+  #     dockerfile: web.Dockerfile
+  #   image: nfp-boilerplate-web
+  #   hostname: nfp-boilerplate-web
+  #   container_name: nfp-boilerplate-web
+  #   volumes:
+  #      - .:/app
+  #   restart: always
+  #   ports:
+  #     - "8080:8080"
+  #   networks:
+  #     psiz:
+  #       aliases:
+  #         - nfp-boilerplate-web
+  # api:
+  #   build:
+  #     context: .
+  #     dockerfile: api.Dockerfile
+  #   image: nfp-boilerplate-api
+  #   hostname: nfp-boilerplate-api
+  #   container_name: nfp-boilerplate-api
+  #   volumes:
+  #      - .:/app
+  #   restart: always
+  #   ports:
+  #     - "5000:5000"
+  #   networks:
+  #     psiz:
+  #       aliases:
+  #         - nfp-boilerplate-api
+
+volumes:
+  postgres:
+
+networks:
+     nfp-boilerplate:
+#     default:
+#       external:
+#         name: nfp-boilerplate
